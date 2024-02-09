@@ -1,7 +1,9 @@
 export interface IRestaurant {
-    id: string,
     name: string,
-    address: string,
-    zip: string,
-    city: string
+    address: {
+      street: string,
+      zip: string,
+      city: string
+    }
+    
   }
