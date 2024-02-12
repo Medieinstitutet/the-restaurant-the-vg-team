@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
       {
         path: "/Booking/:id"
         
-      }
+      },
 
       {
         path: "/Booking/:id",
