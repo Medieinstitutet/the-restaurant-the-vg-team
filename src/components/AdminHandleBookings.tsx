@@ -5,8 +5,14 @@ export const AdminHandleBooking = () => {
 
     return (
         <>
+        <div>
+        <div>
         <h1>Admin Bokningshantering</h1>
+        <div>
         <AllBookings restaurantId={restaurantId} />
+        </div>
+        </div>
+        </div>
         </>
     )
 }

@@ -6,21 +6,21 @@ interface AllBookingsProps {
     restaurantId: string;
 }
  
-export const AllBookings = ({restaurantId}) => {
+export const AllBookings = ({restaurantId}: AllBookingsProps) => {
     const [bookings, setBookings] = useState<IBookingsRestaurant[]>([]);
  
     useEffect(() => {
+        const getAllBookings = async () => {
+            try {
+                const response = await axios.get(`https://school-restaurant-api.azurewebsite.net/booking/restaurant/${restaurantId}`);
+                setBookings(response.data);
+            } catch (error) {
+                console.error("Kunde inte hämta bokningsinformation:", error);
+            }
+        };
+
         getAllBookings();
-    }, []);
- 
-    const getAllBookings = async () => {
-        try {
-            const response = await axios.get(`https://school-restaurant-api.azurewebsite.net/booking/restaurant/${restaurantId}`);
-            setBookings(response.data);
-        } catch (error) {
-            console.error("Kunde inte hämta bokningsinformation:", error);
-        }
-    };
+    }, [restaurantId]);
  
     return (
         <div>
