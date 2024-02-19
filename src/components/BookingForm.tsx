@@ -15,6 +15,7 @@ export const BookingForm = () => {
     const [searchTime, setSearchTime] = useState('');
 
     const [addBooking, setAddBooking] = useState({
+        _id: '',
         restaurantId: '',
         date: '',
         time: '',
@@ -190,15 +191,6 @@ export const BookingForm = () => {
                                     console.log("newBookingId", newBookingId);
 
 
-    axios.post("https://school-restaurant-api.azurewebsites.net/booking/create", addBooking)
-        .then((response) => {
-            console.log('New booking created successfully:', response.data);
-           
-        })
-        .catch((error) => {
-            console.error('Error creating booking:', error);
-        });
-
                 
                                       // Redirect to the booking page with the new id
                                       window.location.href = `/booking/${newBookingId}`;
@@ -347,7 +339,7 @@ export const BookingForm = () => {
                     Book a table
                 </button>
                 <br />
-                {/* <Link to={`/booking/${id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4 ">Se din bokning här</Link> */}
+
             </form>
         </div>
     );

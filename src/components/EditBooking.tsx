@@ -172,7 +172,7 @@ export const EditBookingForm = ({ bookingId }: Props) => {
             onChange={handleInputChange}
           />
         </div>
-        <button className="btn btn-block" type="submit">
+        <button className="btn btn-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4" type="submit">
           Update reservation
         </button>
       </form>

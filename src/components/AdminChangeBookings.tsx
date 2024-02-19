@@ -15,8 +15,8 @@ export const AdminChangeBooking = ({ booking }: { booking: IBookingsRestaurantCh
             const response = await axios.put(
                 `https://school-restaurant-api.azurewebsites.net/booking/update/${updatedbooking._id}`,
                 {
-                    date: updatedBooking.date,
-                    time: updatedBooking.time,
+                    date: updatedbooking.date,
+                    time: updatedbooking.time,
                     numberOfGuests: updatedBooking.numberOfGuests,
                     id: booking._id
                 }
@@ -59,7 +59,7 @@ export const AdminChangeBooking = ({ booking }: { booking: IBookingsRestaurantCh
                         setNewNumberOfGuests(parseInt(e.target.value));
                     }}
                 />
-                <button onClick={() => {
+                <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4" onClick={() => {
                     console.log('Sparaknappen klickad, startar uppdatering...');
                     changeBooking({
                         date: newDate,
@@ -72,4 +72,3 @@ export const AdminChangeBooking = ({ booking }: { booking: IBookingsRestaurantCh
         </Popup>
     );
 };
-
