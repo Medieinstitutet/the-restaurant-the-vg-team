@@ -5,7 +5,7 @@ import { IBookingsRestaurant } from "../models/IBookingsRestaurant";
 import { ICustomer } from "../models/ICustomer";
 import { AdminChangeBooking } from "./AdminChangeBookings";
 import { Link } from "react-router-dom";
-import { IBookingsRestaurantChangeBooking } from '../models/IChangeBooking';
+import { IBookingsRestaurantChangeBooking } from '../models/IBookingsRestaurantChangeBooking';
 export const AdminHandleBookings = () => {
   const [bookings, setBookings] = useState<IBookingsRestaurant[]>([]);
   const [filteredBookings, setFilteredBookings] = useState<IBookingsRestaurant[]>([]);
@@ -100,7 +100,7 @@ export const AdminHandleBookings = () => {
                 Antal gäster: {booking.numberOfGuests} <br />
               </p>
               <AdminChangeBooking booking={booking} updateBookingState={updateBookingState} />
-              <button onClick={() => handleDelete(booking._id)}>Radera</button>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4" onClick={() => handleDelete(booking._id)}>Radera</button>
             </li>
           );
         })}

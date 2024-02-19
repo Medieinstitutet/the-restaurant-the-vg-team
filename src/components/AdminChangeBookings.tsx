@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import axios from 'axios';
-import { IBookingsRestaurantChangeBooking } from '../models/IChangeBooking';
+import { IBookingsRestaurantChangeBooking } from '../models/IBookingsRestaurantChangeBooking';
 
 export const AdminChangeBooking = ({ booking, updateBookingState }: { booking: IBookingsRestaurantChangeBooking, updateBookingState: Function }) => {
     const [newDate, setNewDate] = useState(booking.date);
     const [newTime, setNewTime] = useState(booking.time);
     const [newNumberOfGuests, setNewNumberOfGuests] = useState(booking.numberOfGuests);
+    // const [isOpen, setIsOpen] = useState(false); // Add state for popup visibility
+
+    // const togglePopup = () => {
+    //     setIsOpen(!isOpen); // Toggle the state to open/close the popup
+    // };
+
+
 
     const changeBooking = async (updatedBooking: IBookingsRestaurantChangeBooking) => {
         try {
@@ -14,8 +21,8 @@ export const AdminChangeBooking = ({ booking, updateBookingState }: { booking: I
             const response = await axios.put(
                 `https://school-restaurant-api.azurewebsites.net/booking/update/${updatedBooking.id}`,
                 {
-                    date: updatedbooking.date,
-                    time: updatedbooking.time,
+                    date: updatedBooking.date,
+                    time: updatedBooking.time,
                     numberOfGuests: updatedBooking.numberOfGuests,
                     id: updatedBooking.id
                 }
@@ -33,7 +40,8 @@ export const AdminChangeBooking = ({ booking, updateBookingState }: { booking: I
     console.log('Renderar AdminChangeBooking-komponenten med bokning:', booking);
 
     return (
-        <Popup trigger={<button>Ändra</button>} position="right center">
+        <Popup trigger={<button onClick={togglePopup} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4">Ändra</button>} position="right center">
+        {/* // <Popup trigger={<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4">Ändra</button>} position="right center" open={isOpen} onClose={togglePopup}> // Add open and onClose props */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', backgroundColor: 'white', padding: '20px'}}>
                 Namn: {booking.customerName} {booking.customerLastname}
                 <input
@@ -60,16 +68,23 @@ export const AdminChangeBooking = ({ booking, updateBookingState }: { booking: I
                     onChange={(e) => {
                         console.log('Nytt antal gäster valt:', e.target.value);
                         setNewNumberOfGuests(parseInt(e.target.value));
+                        
                     }}
                 />
-                <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4" onClick={() => {
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4" onClick={() => {
                     console.log('Sparaknappen klickad, startar uppdatering...');
                     changeBooking({
                         date: newDate,
                         time: newTime,
                         numberOfGuests: newNumberOfGuests,
-                        id: booking._id
+                        id: booking._id,
+                        _id: booking._id,
+                        restaurantId: booking.restaurantId,
+                        customerID: booking.customerID,
+                        customerName: booking.customerName,
+                        customerLastname: booking.customerLastname
                     });
+                    
                 }}>Spara</button>
             </div>
         </Popup>
