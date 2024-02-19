@@ -6,7 +6,6 @@ import { ICustomer } from "../models/ICustomer";
 import { AdminChangeBooking } from "./AdminChangeBookings";
 import { Link } from "react-router-dom";
 import { IBookingsRestaurantChangeBooking } from '../models/IChangeBooking';
- 
 export const AdminHandleBookings = () => {
   const [bookings, setBookings] = useState<IBookingsRestaurant[]>([]);
   const [filteredBookings, setFilteredBookings] = useState<IBookingsRestaurant[]>([]);
@@ -64,7 +63,6 @@ export const AdminHandleBookings = () => {
       console.error("Error deleting booking:", error);
     }
   };
- 
   const updateBookingState = (updatedBooking: IBookingsRestaurantChangeBooking) => {
     const updatedBookings = bookings.map(booking => {
         if (booking._id === updatedBooking.id) {
@@ -78,9 +76,9 @@ export const AdminHandleBookings = () => {
         return booking;
     });
     setBookings(updatedBookings);
-    setFilteredBookings(updatedBookings); // Optionally, update filtered bookings as well
+    setFilteredBookings(updatedBookings);
 };
- 
+
   return (
     <div>
       <Link to={"/admin/add"}><button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4">Lägg till bokning</button></Link>
@@ -102,7 +100,7 @@ export const AdminHandleBookings = () => {
                 Antal gäster: {booking.numberOfGuests} <br />
               </p>
               <AdminChangeBooking booking={booking} updateBookingState={updateBookingState} />
-              <button className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded m-4" onClick={() => handleDelete(booking._id)}>Radera</button>
+              <button onClick={() => handleDelete(booking._id)}>Radera</button>
             </li>
           );
         })}
