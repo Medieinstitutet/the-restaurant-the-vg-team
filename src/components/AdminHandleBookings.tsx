@@ -116,28 +116,6 @@ export const AdminHandleBookings = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 // import { AdminSearchBooking } from "./AdminSearchBookings";

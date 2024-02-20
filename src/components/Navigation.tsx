@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export const Navigation = () => {
     return (
+        
         <nav>
             <ul className="flex flex-row gap-10 border-2 border-gray-600 ">
                 <li>

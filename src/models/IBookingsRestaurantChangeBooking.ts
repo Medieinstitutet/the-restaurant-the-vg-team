@@ -8,4 +8,5 @@ export interface IBookingsRestaurantChangeBooking {
     customerID: string,
     customerName: string,
     customerLastname: string,
+
 }

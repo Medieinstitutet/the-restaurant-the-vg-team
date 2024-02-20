@@ -19,17 +19,17 @@ export const ApiRendering = () => {
   }, []);
 
   return (
-    <div className="border-8 border-black">
+    <div className="border-8 border-black flex">
       <ul>
       {restaurants.map((restaurant, index) => {
         return (
         <li key={index}>
-          <h1 className="border-8 border-pink-600">{restaurant.name}</h1>
-          <p className="border-8 border-pink-600">Adress: {restaurant.address} </p>
-          <p className="border-8 border-pink-600">{restaurant.zip} {restaurant.city}</p>
-          <p className="border-8 border-pink-600">RestaurangID: {restaurant._id} </p>
+          <h1 className="">{restaurant.name}</h1>
+          <p className="">Adress: {restaurant.address} </p>
+          <p className="">{restaurant.zip} {restaurant.city}</p>
+          <p className="">RestaurangID: {restaurant._id} </p>
 
-          <img src={ hamster} alt="Hamster eating dumplings" className="border-8 border-yellow-400 min-h-80 m  "/>
+          <img src={ hamster} alt="Hamster eating dumplings" className="min-h-80 m  "/>
 
         </li>
         );
